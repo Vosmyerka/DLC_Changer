@@ -20,7 +20,7 @@ This program developed in the PowerShell language makes it very easy to disable 
 
 2. In the second input field on the right side of the program, enter the path to the folder where the disabled DLCs will be stored. In my case, it is `C:\Users\Vosmyerka\Desktop\ETS2 DLC`.
 
-3. Once all directories have been specified, click the button in the middle labeled `Save Directories`, and your specified directories will be saved to the `directories.txt` file.
+3. Once all directories have been specified, click the button in the middle labeled `Save Directories`, and your specified directories will be saved to the `Documents/dlcchangerdirs.txt` file.
 
 4. From this point on, all map expansion DLCs you have should appear in the left window. All you need to do is select the DLCs you want to disable and click the `Turn DLCs OFF` button.
 

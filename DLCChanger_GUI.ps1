@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r23.9.18
+# Version r23.9.22
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -TypeDefinition @"
@@ -8,7 +8,7 @@ Add-Type -TypeDefinition @"
 
 $form = New-Object Windows.Forms.Form
 $form.Text = "DLC Changer"
-$form.Size = New-Object Drawing.Size(650, 450)
+$form.Size = New-Object Drawing.Size(620, 450)
 $form.BackColor = [System.Drawing.Color]::FromArgb(28, 28, 28)
 $form.ForeColor = [System.Drawing.Color]::White
 
@@ -116,10 +116,14 @@ function Update-DLCList {
     }
 }
 
+$documentsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::MyDocuments)
+$filePath = Join-Path -Path $documentsFolder -ChildPath "dlcchangerdirs.txt"
+
 $saveButton.Add_Click({
     $sourceDir = $sourceTextBox.Text
     $destinationDir = $destinationTextBox.Text
-    "$sourceDir`n$destinationDir" | Out-File -FilePath "directories.txt"
+    $filePath = Join-Path -Path $documentsFolder -ChildPath "dlcchangerdirs.txt"
+    "$sourceDir`n$destinationDir" | Out-File -FilePath $filePath
     Update-DLCList
 })
 
@@ -171,8 +175,8 @@ $moveToSourceButton.Add_Click({
     Update-DLCList
 })
 
-if (Test-Path -Path "directories.txt") {
-    $savedDirs = Get-Content -Path "directories.txt" -TotalCount 2
+if (Test-Path -Path $filePath) {
+    $savedDirs = Get-Content -Path $filePath -TotalCount 2
     if ($savedDirs.Count -eq 2) {
         $dirs = $savedDirs -split "`n"
         $sourceTextBox.Text = $dirs[0]
