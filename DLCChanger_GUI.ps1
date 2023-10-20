@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r23.9.22
+# Version r23.9.23
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -TypeDefinition @"
@@ -72,6 +72,7 @@ $form.Controls.Add($moveToSourceButton)
 
 $dlcFileNames = @(
     @{ FileName = "dlc_balkan_e.scs"; Description = "Road to the Black Sea" },
+    @{ FileName = "dlc_balkan_w.scs"; Description = "West Balkans"},
     @{ FileName = "dlc_balt.scs"; Description = "Beyond the Baltic Sea" },
     @{ FileName = "dlc_east.scs"; Description = "Going East!" },
     @{ FileName = "dlc_feldbinder.scs"; Description = "Feldbinder Trailer Pack" },

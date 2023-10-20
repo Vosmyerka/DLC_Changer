@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r23.9.20
+# Version r23.9.21
 
 # Variables for storing directories
 $source_dir = ""
@@ -39,6 +39,7 @@ function Show-Menu {
     Write-Output "------------------"
     $dlcFiles = @(
         "dlc_balkan_e.scs",
+        "dlc_balkan_w.scs",
         "dlc_balt.scs",
         "dlc_east.scs",
         "dlc_feldbinder.scs",
