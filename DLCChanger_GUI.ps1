@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r23.9.23
+# Version r23.11.21
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -TypeDefinition @"
@@ -7,80 +7,93 @@ Add-Type -TypeDefinition @"
 "@
 
 $form = New-Object Windows.Forms.Form
-$form.Text = "DLC Changer"
+$form.Text = "Vosmyerka's DLCChanger"
 $form.Size = New-Object Drawing.Size(620, 450)
 $form.BackColor = [System.Drawing.Color]::FromArgb(28, 28, 28)
 $form.ForeColor = [System.Drawing.Color]::White
 
+$defaultFont = [System.Windows.Forms.Control]::DefaultFont
+
 $sourceLabel = New-Object Windows.Forms.Label
 $sourceLabel.Text = "Source Directory:"
-$sourceLabel.Location = New-Object Drawing.Point(100, 10)
-$sourceLabel.Size = New-Object Drawing.Size(120, 20)
+$sourceLabel.Location = New-Object Drawing.Point(100, 17)
+$sourceLabel.Size = New-Object Drawing.Size(150, 20)
 $sourceLabel.ForeColor = [System.Drawing.Color]::White
+$sourceLabel.Font = New-Object Drawing.Font($defaultFont.FontFamily, 10)
 $form.Controls.Add($sourceLabel)
 
 $destinationLabel = New-Object Windows.Forms.Label
 $destinationLabel.Text = "Destination Directory:"
-$destinationLabel.Location = New-Object Drawing.Point(400, 10)
-$destinationLabel.Size = New-Object Drawing.Size(120, 20)
+$destinationLabel.Location = New-Object Drawing.Point(400, 17)
+$destinationLabel.Size = New-Object Drawing.Size(150, 20)
 $destinationLabel.ForeColor = [System.Drawing.Color]::White
+$destinationLabel.Font = New-Object Drawing.Font($defaultFont.FontFamily, 10)
 $form.Controls.Add($destinationLabel)
 
 $sourceTextBox = New-Object Windows.Forms.TextBox
-$sourceTextBox.Location = New-Object Drawing.Point(10, 40)
+$sourceTextBox.Location = New-Object Drawing.Point(10, 50)
 $sourceTextBox.Size = New-Object Drawing.Size(280, 20)
 $form.Controls.Add($sourceTextBox)
 
 $destinationTextBox = New-Object Windows.Forms.TextBox
-$destinationTextBox.Location = New-Object Drawing.Point(310, 40)
+$destinationTextBox.Location = New-Object Drawing.Point(310, 50)
 $destinationTextBox.Size = New-Object Drawing.Size(280, 20)
 $form.Controls.Add($destinationTextBox)
 
 $saveButton = New-Object Windows.Forms.Button
 $saveButton.Text = "Save Directories"
 $saveButton.Location = New-Object Drawing.Point(250, 10)
-$saveButton.Size = New-Object Drawing.Size(100, 20)
+$saveButton.Size = New-Object Drawing.Size(105, 30)
+$saveButton.Font = New-Object Drawing.Font($defaultFont.FontFamily, 8)
+$saveButton.BackColor = [System.Drawing.Color]::DarkGoldenrod
 $form.Controls.Add($saveButton)
 
 $sourceListBox = New-Object Windows.Forms.ListBox
-$sourceListBox.Location = New-Object Drawing.Point(10, 70)
+$sourceListBox.Location = New-Object Drawing.Point(10, 80)
 $sourceListBox.Size = New-Object Drawing.Size(280, 280)
 $sourceListBox.SelectionMode = [System.Windows.Forms.SelectionMode]::MultiExtended
 $sourceListBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 48)
 $sourceListBox.ForeColor = [System.Drawing.Color]::White
+$sourceListBox.Font = New-Object Drawing.Font($defaultFont.FontFamily, 9)
+
 $form.Controls.Add($sourceListBox)
 
 $destinationListBox = New-Object Windows.Forms.ListBox
-$destinationListBox.Location = New-Object Drawing.Point(310, 70)
+$destinationListBox.Location = New-Object Drawing.Point(310, 80)
 $destinationListBox.Size = New-Object Drawing.Size(280, 280)
 $destinationListBox.SelectionMode = [System.Windows.Forms.SelectionMode]::MultiExtended
 $destinationListBox.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 48)
 $destinationListBox.ForeColor = [System.Drawing.Color]::White
+$destinationListBox.Font = New-Object Drawing.Font($defaultFont.FontFamily, 9)
+
 $form.Controls.Add($destinationListBox)
 
 $moveToDestinationButton = New-Object Windows.Forms.Button
 $moveToDestinationButton.Text = "Turn DLCs OFF"
-$moveToDestinationButton.Location = New-Object Drawing.Point(10, 360)
-$moveToDestinationButton.Size = New-Object Drawing.Size(280, 20)
+$moveToDestinationButton.Location = New-Object Drawing.Point(10, 365)
+$moveToDestinationButton.Size = New-Object Drawing.Size(280, 30)
+$moveToDestinationButton.BackColor = [System.Drawing.Color]::DarkRed
 $form.Controls.Add($moveToDestinationButton)
 
 $moveToSourceButton = New-Object Windows.Forms.Button
 $moveToSourceButton.Text = "Turn DLCs ON"
-$moveToSourceButton.Location = New-Object Drawing.Point(310, 360)
-$moveToSourceButton.Size = New-Object Drawing.Size(280, 20)
+$moveToSourceButton.Location = New-Object Drawing.Point(310, 365)
+$moveToSourceButton.Size = New-Object Drawing.Size(280, 30)
+$moveToSourceButton.BackColor = [System.Drawing.Color]::DarkGreen
 $form.Controls.Add($moveToSourceButton)
 
 $dlcFileNames = @(
-    @{ FileName = "dlc_balkan_e.scs"; Description = "Road to the Black Sea" },
-    @{ FileName = "dlc_balkan_w.scs"; Description = "West Balkans"},
     @{ FileName = "dlc_balt.scs"; Description = "Beyond the Baltic Sea" },
     @{ FileName = "dlc_east.scs"; Description = "Going East!" },
-    @{ FileName = "dlc_feldbinder.scs"; Description = "Feldbinder Trailer Pack" },
-    @{ FileName = "dlc_fr.scs"; Description = "Vive la France !" },
     @{ FileName = "dlc_iberia.scs"; Description = "Iberia" },
     @{ FileName = "dlc_it.scs"; Description = "Italia" },
+    @{ FileName = "dlc_balkan_e.scs"; Description = "Road to the Black Sea" },
+    @{ FileName = "dlc_north.scs"; Description = "Scandinavia" },
+    @{ FileName = "dlc_fr.scs"; Description = "Vive la France !" },
+    @{ FileName = "dlc_balkan_w.scs"; Description = "West Balkans"},
     @{ FileName = "dlc_krone.scs"; Description = "Krone Trailer Pack" },
-    @{ FileName = "dlc_north.scs"; Description = "Scandinavia" }
+    @{ FileName = "dlc_feldbinder.scs"; Description = "Feldbinder Trailer Pack" }
+    
 )
 function Update-DLCList {
     $sourceListBox.Items.Clear()
