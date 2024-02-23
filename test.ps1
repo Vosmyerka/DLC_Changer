@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r24.02.23
+# Version r24.2.23
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -TypeDefinition @"
