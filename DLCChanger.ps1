@@ -1,5 +1,5 @@
 # Made by Vosmyerka
-# Version r24.2.23
+# Version r25.2.6
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -TypeDefinition @"
@@ -107,6 +107,7 @@ $form.Controls.Add($moveAllToSourceButton)
 $dlcFileNames = @(
     @{ FileName = "dlc_balt.scs"; Description = "Beyond the Baltic Sea" },
     @{ FileName = "dlc_east.scs"; Description = "Going East!" },
+    @{ FileName = "dlc_greece.scs"; Description = "Greece" },
     @{ FileName = "dlc_iberia.scs"; Description = "Iberia" },
     @{ FileName = "dlc_it.scs"; Description = "Italia" },
     @{ FileName = "dlc_balkan_e.scs"; Description = "Road to the Black Sea" },
@@ -115,7 +116,6 @@ $dlcFileNames = @(
     @{ FileName = "dlc_balkan_w.scs"; Description = "West Balkans"},
     @{ FileName = "dlc_krone.scs"; Description = "Krone Trailer Pack" },
     @{ FileName = "dlc_feldbinder.scs"; Description = "Feldbinder Trailer Pack" }
-    
 )
 function Update-DLCList {
     $sourceListBox.Items.Clear()
